@@ -14,21 +14,29 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int selectedindex = 0;
+  int selectedIndex = 0;
 
-  List pages = [const HomePage(), const SerachPage(), const BookmarkPage()];
+  final List<Widget> pages = [
+    const HomePage(),
+    const SerachPage(),
+    const BookmarkPage()
+  ];
   int currentIndex = 0;
   void onTap(int index) {
-    setState(() {});
+    setState(() {
+      currentIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[0],
+      body: Container(child: pages[selectedIndex]),
       bottomNavigationBar: CurvedNavigationBar(
+        // currentIndex: currentIndex,
         buttonBackgroundColor: Colors.amber,
         backgroundColor: Colors.white,
+        // animationCurve: Curves.easeInExpo,
         animationDuration: const Duration(milliseconds: 250),
         items: const <Widget>[
           FaIcon(Icons.book_outlined, size: 30),
@@ -37,10 +45,10 @@ class _MainPageState extends State<MainPage> {
         ],
         onTap: (index) {
           setState(() {
-            selectedindex = index;
+            selectedIndex = index;
           });
-          //Handle button tap
         },
+        //Handle button tap
       ),
     );
   }

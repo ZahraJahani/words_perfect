@@ -7,7 +7,7 @@ class BookmarkPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        child: const Text("serach page"),
+        child: const Text("book mark page"),
       ),
     );
   }
