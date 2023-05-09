@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:words_perfect/colors.dart';
 
-class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
+class BaseAppBar extends StatelessWidget {
   final Text title;
   final AppBar appBar;
   // final Color backgroundColor;
@@ -21,7 +21,4 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title,
     ));
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(appBar.preferredSize.height);
 }

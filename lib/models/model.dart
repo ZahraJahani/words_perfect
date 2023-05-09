@@ -1,39 +1,39 @@
-import 'dart:io';
-import 'package:hive/hive.dart';
+// import 'dart:io';
+// import 'package:hive/hive.dart';
 // part 'model.g.dart';
 
-@HiveType(typeId: 1)
-class Word {
-  Word({required this.word, required this.meaning, required this.example});
+// @HiveType(typeId: 1)
+// class Word {
+//   Word({required this.word, required this.meaning, required this.example});
 
-  @HiveField(0)
-  String word;
+//   @HiveField(0)
+//   String word;
 
-  @HiveField(1)
-  String meaning;
+//   @HiveField(1)
+//   String meaning;
 
-  @HiveField(2)
-  String example;
+//   @HiveField(2)
+//   String example;
 
-  @override
-  String toString() {
-    return '';
-  }
-}
+//   @override
+//   String toString() {
+//     return '';
+//   }
+// }
 
-void main() async {
-  var path = Directory.current.path;
-  Hive..init(path);
+// void main() async {
+//   var path = Directory.current.path;
+//   Hive..init(path);
 
-  var box = await Hive.openBox('testBox');
+//   var box = await Hive.openBox('testBox');
 
-  // var person = Word(
-  //   word: 'Dave',
-  // meaning: 22,
-  // example: ['Linda', 'Marc', 'Anne'],
-  // );
+//   // var person = Word(
+//   //   word: 'Dave',
+//   // meaning: 22,
+//   // example: ['Linda', 'Marc', 'Anne'],
+//   // );
 
-  // await box.put('dave', person);
+//   // await box.put('dave', person);
 
-  print(box.get('dave')); // Dave: 22
-}
+//   print(box.get('dave')); // Dave: 22
+// }
