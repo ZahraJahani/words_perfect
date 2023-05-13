@@ -14,23 +14,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var box;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(238, 100, 255, 219),
         title: const Text("words perfect"),
       ),
-      body: Container(
-          child: ListView.builder(
-              itemCount: box.length,
-              itemBuilder: (BuildContext context, int index) {
-                final word = box.getAt(index) as Words;
-                return ListTile(
-                  title: Text(word.name),
-                  subtitle: Text(word.definition),
-                  onTap: () {},
-                );
-              })),
+      body: ListView.builder(
+          itemCount: vocabularies.length,
+          itemBuilder: (context, index) {
+            final word = vocabularies[index];
+            return ListTile(
+              title: Text(word.name),
+              subtitle: Text(word.definition),
+              onTap: () {},
+            );
+          }),
     );
   }
 }
