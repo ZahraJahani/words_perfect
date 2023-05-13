@@ -45,18 +45,4 @@ class Entry extends HiveObject {
     }
     wordBox.close();
   }
-// final vocabularies = [
-//   Vocabulary()
-//     ..word = 'Flutter'
-//     ..definition = 'A mobile development framework'
-//     ..lessonNumber = 1,
-//   Vocabulary()
-//     ..word = 'Dart'
-//     ..definition = 'The programming language used in Flutter'
-//     ..lessonNumber = 1,
-//   Vocabulary()
-//     ..word = 'Widget'
-//     ..definition = 'A basic building block of a Flutter app'
-//     ..lessonNumber = 2,
-// ];
 }
