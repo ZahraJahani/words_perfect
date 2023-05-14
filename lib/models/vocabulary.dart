@@ -22,13 +22,13 @@ class Entry extends HiveObject {
       required this.lessonNumber});
   void addWords() async {
     final wordBox = await Hive.openBox('words');
-    final List<Entry> vocabularies = [
+    List<Entry> vocabularies = [
       Entry(
-        id: 1,
-        name: 'Flutter',
-        definition: 'A mobile development framework',
-        example: 'Flutter is fun',
-        lessonNumber: 2,
+        id: 2,
+        name: 'Dart',
+        definition: 'A mobile development language',
+        example: 'Dart is fun',
+        lessonNumber: 1,
       ),
       Entry(
         id: 1,

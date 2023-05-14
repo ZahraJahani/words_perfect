@@ -14,6 +14,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    List<Entry> vocabularies = [
+      Entry(
+        id: 2,
+        name: 'Dart',
+        definition: 'A mobile development language',
+        example: 'Dart is fun',
+        lessonNumber: 1,
+      ),
+      Entry(
+        id: 1,
+        name: 'Flutter',
+        definition: 'A mobile development framework',
+        example: 'Flutter is fun',
+        lessonNumber: 2,
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(238, 100, 255, 219),
