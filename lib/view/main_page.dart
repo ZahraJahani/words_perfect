@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:words_perfect/view/bookmark_page.dart';
 import 'package:words_perfect/view/search_page.dart';
-
 import 'home_page.dart';
 
 class MainPage extends StatefulWidget {

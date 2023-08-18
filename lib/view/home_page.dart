@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:words_perfect/models/vocabulary.dart';
+import 'package:words_perfect/models/type_adapter.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,39 +12,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Box<VocabularyItem> vocabularyBox;
+  @override
+  void initState() {
+    super.initState();
+    _initHive();
+  }
+
+  Future<void> _initHive() async {
+    final appDocumentDir =
+        await path_provider.getApplicationDocumentsDirectory();
+    Hive.registerAdapter(MyDataAdapter());
+    vocabularyBox = await Hive.openBox<VocabularyItem>('vocabulary_box');
+    // await vocabularyBox.addAll(vocabularyList);
+    Hive.init(appDocumentDir.path);
+    Hive.registerAdapter(MyDataAdapter());
+    await Hive.openBox<VocabularyItem>('vocabularies');
+  }
+
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Entry> vocabularies = [
-      Entry(
-        id: 2,
-        name: 'Dart',
-        definition: 'A mobile development language',
-        example: 'Dart is fun',
-        lessonNumber: 1,
-      ),
-      Entry(
-        id: 1,
-        name: 'Flutter',
-        definition: 'A mobile development framework',
-        example: 'Flutter is fun',
-        lessonNumber: 2,
-      ),
-    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(238, 100, 255, 219),
         title: const Text("words perfect"),
       ),
-      body: ListView.builder(
-          itemCount: vocabularies.length,
-          itemBuilder: (context, index) {
-            final word = vocabularies[index];
-            return ListTile(
-              title: Text(word.name),
-              subtitle: Text(word.definition),
-              onTap: () {},
-            );
-          }),
+      body: ValueListenableBuilder<Box<VocabularyItem>>(
+          valueListenable:
+              Hive.box<VocabularyItem>('vocabularies').listenable(),
+          builder: ((context, box, _) {
+            return ListView.builder(
+                itemCount: box.length,
+                itemBuilder: (context, index) {
+                  final data = box.getAt(index);
+                  return ListTile(
+                    title: Text(data!.name),
+                    subtitle: Text(data.definition),
+                  );
+                });
+          })),
     );
   }
 }

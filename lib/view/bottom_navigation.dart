@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:words_perfect/colors.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:words_perfect/view/bookmark_page.dart';
-import 'package:words_perfect/view/search_page.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({Key? key}) : super(key: key);

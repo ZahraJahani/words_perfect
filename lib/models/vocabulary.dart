@@ -1,9 +1,8 @@
-import 'dart:io';
 import 'package:hive/hive.dart';
 part 'vocabulary.g.dart';
 
 @HiveType(typeId: 0)
-class Entry extends HiveObject {
+class VocabularyItem extends HiveObject {
   @HiveField(0)
   int id;
   @HiveField(1)
@@ -14,23 +13,22 @@ class Entry extends HiveObject {
   String example;
   @HiveField(4)
   int lessonNumber;
-  Entry(
+  VocabularyItem(
       {required this.id,
       required this.name,
       required this.definition,
       required this.example,
       required this.lessonNumber});
-  void addWords() async {
-    final wordBox = await Hive.openBox('words');
-    List<Entry> vocabularies = [
-      Entry(
+  void addWords() {
+    List<VocabularyItem> vocabularyList = [
+      VocabularyItem(
         id: 2,
         name: 'Dart',
         definition: 'A mobile development language',
         example: 'Dart is fun',
         lessonNumber: 1,
       ),
-      Entry(
+      VocabularyItem(
         id: 1,
         name: 'Flutter',
         definition: 'A mobile development framework',
@@ -38,11 +36,5 @@ class Entry extends HiveObject {
         lessonNumber: 2,
       ),
     ];
-    await wordBox.add(vocabularies);
-    final allWords = wordBox.values.toList();
-    for (var word in vocabularies) {
-      wordBox.add(word);
-    }
-    wordBox.close();
   }
 }
