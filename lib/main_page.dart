@@ -1,9 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:words_perfect/view/bookmark_page.dart';
-import 'package:words_perfect/view/search_page.dart';
-import 'home_page.dart';
+import 'package:words_perfect/pages/bookmark_page.dart';
+import 'package:words_perfect/pages/search_page.dart';
+import 'pages/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

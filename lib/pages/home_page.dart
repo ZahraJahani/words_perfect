@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:words_perfect/models/vocabulary.dart';
+import 'package:words_perfect/appbar.dart';
+import 'package:words_perfect/models/word.dart';
 import 'package:words_perfect/models/type_adapter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
@@ -24,25 +25,21 @@ class _HomePageState extends State<HomePage> {
         await path_provider.getApplicationDocumentsDirectory();
     Hive.registerAdapter(MyDataAdapter());
     vocabularyBox = await Hive.openBox<VocabularyItem>('vocabulary_box');
-    // await vocabularyBox.addAll(vocabularyList);
+    //await vocabularyBox.addAll(vocabularyList);
     Hive.init(appDocumentDir.path);
     Hive.registerAdapter(MyDataAdapter());
     await Hive.openBox<VocabularyItem>('vocabularies');
   }
 
-  @override
-  void dispose() {
-    Hive.close();
-    super.dispose();
-  }
-
+  // @override
+  // void dispose() {
+  //   Hive.close();
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(238, 100, 255, 219),
-        title: const Text("words perfect"),
-      ),
+      appBar: const CustomAppBar(),
       body: ValueListenableBuilder<Box<VocabularyItem>>(
           valueListenable:
               Hive.box<VocabularyItem>('vocabularies').listenable(),

@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:words_perfect/models/vocabulary.dart';
+import 'package:words_perfect/models/word.dart';
 
 class MyDataAdapter extends TypeAdapter<VocabularyItem> {
   @override

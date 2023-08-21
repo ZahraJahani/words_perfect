@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-part 'vocabulary.g.dart';
+part 'word.g.dart';
 
 @HiveType(typeId: 0)
 class VocabularyItem extends HiveObject {
